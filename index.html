@@ -9,17 +9,29 @@
 <body>
   <div class="container">
     <h1>Quiz App</h1>
-    <div id="quiz"></div>
+    <p id="questionCount">Soru sayısı: Yükleniyor...</p>
+
+    <div class="range-selector">
+      <div>
+        <label for="startQuestion">Başlangıç Sorusu</label>
+        <input type="number" id="startQuestion" min="1" step="1" placeholder="1">
+      </div>
+
+      <div>
+        <label for="endQuestion" style="margin-right: 42px;">Bitiş Sorusu</label>
+        <input type="number" id="endQuestion" min="1" step="1" placeholder="10">
+      </div>
+
+      <button id="startQuiz" class="button">Teste Başla</button>
+    </div>
+
+    <div id="quiz" style="display:none;"></div>
     <div id="result" class="result"></div>
-    <button id="submit" class="button">Submit</button>
+
+    <button id="submit" class="button" style="display:none;">Submit</button>
     <button id="retry" class="button hide">Retry</button>
     <button id="showAnswer" class="button hide">Show Answer</button>
   </div>
-  <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
-
-
-
-
-<!--https://www.codewithfaraz.com/content/161/build-a-quiz-application-with-html-css-and-javascript-step-by-step-guide#google_vignette-->
