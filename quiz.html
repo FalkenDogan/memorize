@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript Quiz</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .button-container {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .incorrect-answers {
+      margin-top: 20px;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Quiz</h1>
+    <p id="questionNumber">Soru sırası: Yükleniyor...</p>
+    <div id="quiz"></div>
+    <div id="result" class="result"></div>
+    <div id="incorrectAnswers" class="incorrect-answers hide"></div>
+    <button id="previous" class="button" style="display:none;">Önceki Soru</button>
+    <button id="submit" class="button" style="display:none;">Submit</button>
+    <button id="retry" class="button hide">Retry</button>
+    <div class="button-container">
+      <button id="showAnswer" class="button hide">Show Answer</button>
+      <button id="exit" class="button hide">Çıkış</button>
+    </div>
+  </div>
+<script src="script.js"></script>
+</body>
+</html>

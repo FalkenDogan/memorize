@@ -24,14 +24,44 @@
 
       <button id="startQuiz" class="button">Teste Başla</button>
     </div>
-
-    <div id="quiz" style="display:none;"></div>
-    <div id="result" class="result"></div>
-
-    <button id="submit" class="button" style="display:none;">Submit</button>
-    <button id="retry" class="button hide">Retry</button>
-    <button id="showAnswer" class="button hide">Show Answer</button>
   </div>
-<script src="script.js"></script>
+<script>
+  let quizData = []; // JSON dosyasından yüklenecek
+
+  // JSON dosyasını yükle
+  fetch('data.json')
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then(data => {
+      quizData = data;
+      document.getElementById('questionCount').innerText = `Soru sayısı: ${quizData.length}`;
+      document.getElementById('endQuestion').max = quizData.length;
+    })
+    .catch(error => {
+      console.error('JSON dosyasını yüklerken bir hata oluştu:', error);
+    });
+
+  document.getElementById('startQuiz').addEventListener('click', function() {
+    const startInput = document.getElementById('startQuestion').value;
+    const endInput = document.getElementById('endQuestion').value;
+    const start = parseInt(startInput) - 1;
+    const end = parseInt(endInput);
+
+    if (isNaN(start) || isNaN(end) || start < 0 || end > quizData.length || start >= end) {
+      alert('Lütfen geçerli bir başlangıç ve bitiş değeri giriniz.');
+      return;
+    }
+
+    // Seçilen aralığı localStorage'a kaydet
+    localStorage.setItem('startQuestion', start);
+    localStorage.setItem('endQuestion', end);
+
+    window.location.href = 'quiz.html';
+  });
+</script>
 </body>
 </html>
